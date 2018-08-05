@@ -78,6 +78,20 @@
             <key>defaults</key>
             <string>com.dpkgdan.powertap</string>
             <key>key</key>
+            <string>PowerDown-String</string>
+            <key>label</key>
+            <string>Power Down</string>
+            <key>placeholder</key>
+            <string>slide to power down</string>
+            <key>PostNotification</key>
+            <string>com.dpkgdan.powertap.settingsupdated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>defaults</key>
+            <string>com.dpkgdan.powertap</string>
+            <key>key</key>
             <string>Respring-String</string>
             <key>label</key>
             <string>Respring</string>

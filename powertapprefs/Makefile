@@ -1,7 +1,7 @@
-ARCHS = armv7 arm64
+ARCHS = arm64
 ADDITIONAL_OBJCFLAGS = -fobjc-arc
 
-include theos/makefiles/common.mk
+include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = PowerTapPrefs
 PowerTapPrefs_FILES = PowerTapPrefs.mm

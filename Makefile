@@ -1,7 +1,8 @@
-ARCHS = armv7 arm64
+ARCHS = arm64
+TARGET = iphone:latest:11.2
 ADDITIONAL_OBJCFLAGS = -fobjc-arc
 
-include theos/makefiles/common.mk
+include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = PowerTap
 PowerTap_FILES = Tweak.xm PTPreferences.m

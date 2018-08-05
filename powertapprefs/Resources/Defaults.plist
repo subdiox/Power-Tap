@@ -10,13 +10,15 @@
 		<true/>
 		<key>index</key>
 		<string>0</string>
+		<key>icon</key>
+		<string>/Library/Application Support/Power Tap/PowerDownKnob.png</string>
 		<key>string</key>
 		<string>slide to power off</string>
 	</dict>
 	<key>Reboot</key>
 	<dict>
 		<key>color</key>
-		<string>orange</string>
+		<string>green</string>
 		<key>enabled</key>
 		<true/>
 		<key>index</key>
@@ -42,7 +44,7 @@
 	<key>SafeMode</key>
 	<dict>
 		<key>color</key>
-		<string>purple</string>
+		<string>blue</string>
 		<key>enabled</key>
 		<true/>
 		<key>index</key>

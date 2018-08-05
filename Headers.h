@@ -7,7 +7,18 @@
 
 @end
 
-@interface SBPowerDownView : UIView
+@interface SBPowerDownAlertView : UIView
+
+@end
+
+@interface _SBInternalPowerDownView : UIView
+
+@end
+
+@interface FBSystemService : NSObject
+
+- (void)shutdownAndReboot:(BOOL)arg1;
+- (void)exitAndRelaunch:(BOOL)arg1;
 
 @end
 
@@ -26,7 +37,7 @@
 @interface UIApplication (PowerOptions)
 
 - (void)reboot;
-- (void)terminateWithSuccess;
+- (void)_relaunchSpringBoardNow;
 - (void)nonExistentMethod;
 
 @end

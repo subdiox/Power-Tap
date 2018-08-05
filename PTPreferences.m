@@ -61,14 +61,8 @@ static void reconcilePreferences(NSMutableDictionary *defaults, NSMutableDiction
 
 - (UIImage*)iconForMode:(NSString*)mode
 {
-	UIImage *icon = nil;
-	if ([mode isEqualToString: @"PowerDown"])
-		icon = [UIImage imageNamed: @"PowerDownKnob"];
-	else
-	{
-		NSString *pathToIcon = [self valueForSpecifier: @"icon" mode: mode];
-		icon = [UIImage imageWithContentsOfFile: pathToIcon];
-	}
+	NSString *pathToIcon = [self valueForSpecifier: @"icon" mode: mode];
+	UIImage *icon = [UIImage imageWithContentsOfFile: pathToIcon];
 	return icon;
 }
 
