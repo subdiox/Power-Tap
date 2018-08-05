@@ -16,13 +16,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>com.dpkgdan.powertap</string>
+			<string>com.subdiox.powertap</string>
 			<key>key</key>
 			<string>Reboot-Toggle</string>
 			<key>label</key>
 			<string>Reboot</string>
             <key>PostNotification</key>
-            <string>com.dpkgdan.powertap.settingsupdated</string>
+            <string>com.subdiox.powertap.settingsupdated</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -30,13 +30,27 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>com.dpkgdan.powertap</string>
+			<string>com.subdiox.powertap</string>
+			<key>key</key>
+			<string>SoftReboot-Toggle</string>
+			<key>label</key>
+			<string>Soft Reboot</string>
+            <key>PostNotification</key>
+            <string>com.subdiox.powertap.settingsupdated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.subdiox.powertap</string>
 			<key>key</key>
 			<string>Respring-Toggle</string>
 			<key>label</key>
 			<string>Respring</string>
 			<key>PostNotification</key>
-            <string>com.dpkgdan.powertap.settingsupdated</string>
+            <string>com.subdiox.powertap.settingsupdated</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -44,39 +58,39 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>com.dpkgdan.powertap</string>
+			<string>com.subdiox.powertap</string>
 			<key>key</key>
 			<string>SafeMode-Toggle</string>
 			<key>label</key>
 			<string>Safe Mode</string>
 			<key>PostNotification</key>
-            <string>com.dpkgdan.powertap.settingsupdated</string>
+            <string>com.subdiox.powertap.settingsupdated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.subdiox.powertap</string>
+			<key>key</key>
+			<string>UICache-Toggle</string>
+			<key>label</key>
+			<string>UICache</string>
+            <key>PostNotification</key>
+            <string>com.subdiox.powertap.settingsupdated</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Custom Track Text</string>
+			<string>Custom Track Text (needs Respring)</string>
 		</dict>
 		<dict>
 			<key>cell</key>
             <string>PSEditTextCell</string>
             <key>defaults</key>
-            <string>com.dpkgdan.powertap</string>
-            <key>key</key>
-            <string>Reboot-String</string>
-            <key>label</key>
-            <string>Reboot</string>
-            <key>placeholder</key>
-            <string>slide to reboot</string>
-            <key>PostNotification</key>
-            <string>com.dpkgdan.powertap.settingsupdated</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-            <string>PSEditTextCell</string>
-            <key>defaults</key>
-            <string>com.dpkgdan.powertap</string>
+            <string>com.subdiox.powertap</string>
             <key>key</key>
             <string>PowerDown-String</string>
             <key>label</key>
@@ -84,13 +98,41 @@
             <key>placeholder</key>
             <string>slide to power down</string>
             <key>PostNotification</key>
-            <string>com.dpkgdan.powertap.settingsupdated</string>
+            <string>com.subdiox.powertap.settingsupdated</string>
 		</dict>
 		<dict>
 			<key>cell</key>
             <string>PSEditTextCell</string>
             <key>defaults</key>
-            <string>com.dpkgdan.powertap</string>
+            <string>com.subdiox.powertap</string>
+            <key>key</key>
+            <string>Reboot-String</string>
+            <key>label</key>
+            <string>Reboot</string>
+            <key>placeholder</key>
+            <string>slide to reboot</string>
+            <key>PostNotification</key>
+            <string>com.subdiox.powertap.settingsupdated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>defaults</key>
+            <string>com.subdiox.powertap</string>
+            <key>key</key>
+            <string>SoftReboot-String</string>
+            <key>label</key>
+            <string>Soft Reboot</string>
+            <key>placeholder</key>
+            <string>slide to soft reboot</string>
+            <key>PostNotification</key>
+            <string>com.subdiox.powertap.settingsupdated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>defaults</key>
+            <string>com.subdiox.powertap</string>
             <key>key</key>
             <string>Respring-String</string>
             <key>label</key>
@@ -98,13 +140,13 @@
             <key>placeholder</key>
             <string>slide to respring</string>
             <key>PostNotification</key>
-            <string>com.dpkgdan.powertap.settingsupdated</string>
+            <string>com.subdiox.powertap.settingsupdated</string>
 		</dict>
 		<dict>
 			<key>cell</key>
             <string>PSEditTextCell</string>
             <key>defaults</key>
-            <string>com.dpkgdan.powertap</string>
+            <string>com.subdiox.powertap</string>
             <key>key</key>
             <string>SafeMode-String</string>
             <key>label</key>
@@ -112,13 +154,27 @@
             <key>placeholder</key>
             <string>slide for safe mode</string>
             <key>PostNotification</key>
-            <string>com.dpkgdan.powertap.settingsupdated</string>
+            <string>com.subdiox.powertap.settingsupdated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>defaults</key>
+            <string>com.subdiox.powertap</string>
+            <key>key</key>
+            <string>UICache-String</string>
+            <key>label</key>
+            <string>UICache</string>
+            <key>placeholder</key>
+            <string>slide to uicache</string>
+            <key>PostNotification</key>
+            <string>com.subdiox.powertap.settingsupdated</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>footerText</key>
-			<string>© 2014 Dan Saba</string>
+			<string>© 2018 subdiox</string>
 		</dict>
 		<dict>
 			<key>action</key>
@@ -132,6 +188,6 @@
 		</dict>
 	</array>
 	<key>title</key>
-	<string>Power Tap</string>
+	<string>Power Tap 2</string>
 </dict>
 </plist>

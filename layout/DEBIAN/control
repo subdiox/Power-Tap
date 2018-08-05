@@ -1,10 +1,10 @@
-Package: com.dpkgdan.powertap
-Name: Power Tap (iOS 11)
+Package: com.subdiox.powertap2
+Name: Power Tap 2
 Depends: firmware (>= 11), mobilesubstrate, preferenceloader
-Conflicts: com.dpkgdan.slidetoreboot, com.myrepospace.dpkgdan.powertap, com.myrepospace.dpkgdan.slidetoreboot
-Version: 1.2.2
+Conflicts: com.dpkgdan.slidetoreboot, com.myrepospace.dpkgdan.powertap, com.myrepospace.dpkgdan.slidetoreboot, com.dpkgdan.powertap
+Version: 1.0
 Architecture: iphoneos-arm
-Description: Power Tap allows you to toggle the power down bar through different settings, such as "reboot," "respring," and "safe mode." Toggling takes place when you tap the slider's knob (a circular icon with a power symbol). Power Tap is intended to replace the earlier tweak "Slide to Reboot."
+Description: Power Tap 2 adds "Reboot", "Soft Reboot", "Respring", "Safe Mode", "UICache" to your power down options.
 Maintainer: subdiox
 Author: subdiox
 Section: Tweaks

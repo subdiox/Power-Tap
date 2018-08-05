@@ -1,7 +1,7 @@
 #import "PTPreferences.h"
 
 #define DEFAULTS_PATH @"/Library/PreferenceBundles/PowerTapPrefs.bundle/Defaults.plist"
-#define USER_PREFS_PATH @"/User/Library/Preferences/com.dpkgdan.powertap.plist"
+#define USER_PREFS_PATH @"/User/Library/Preferences/com.subdiox.powertap.plist"
 
 @implementation PTPreferences
 

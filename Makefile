@@ -1,5 +1,5 @@
 ARCHS = arm64
-TARGET = iphone:latest:11.2
+TARGET = iphone:11.2:11.0
 ADDITIONAL_OBJCFLAGS = -fobjc-arc
 
 include $(THEOS)/makefiles/common.mk
@@ -7,7 +7,6 @@ include $(THEOS)/makefiles/common.mk
 TWEAK_NAME = PowerTap
 PowerTap_FILES = Tweak.xm PTPreferences.m
 PowerTap_FRAMEWORKS = UIKit CoreFoundation
-PowerTap_PRIVATE_FRAMEWORKS = TelephonyUI
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 

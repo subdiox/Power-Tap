@@ -28,6 +28,19 @@
 		<key>string</key>
 		<string>slide to reboot</string>
 	</dict>
+	<key>SoftReboot</key>
+	<dict>
+		<key>color</key>
+		<string>green</string>
+		<key>enabled</key>
+		<true/>
+		<key>index</key>
+		<string>2</string>
+		<key>icon</key>
+		<string>/Library/Application Support/Power Tap/SoftRebootKnob.png</string>
+		<key>string</key>
+		<string>slide to soft reboot</string>
+	</dict>
 	<key>Respring</key>
 	<dict>
 		<key>color</key>
@@ -35,7 +48,7 @@
 		<key>enabled</key>
 		<true/>
 		<key>index</key>
-		<string>2</string>
+		<string>3</string>
 		<key>icon</key>
 		<string>/Library/Application Support/Power Tap/RespringKnob.png</string>
 		<key>string</key>
@@ -48,11 +61,24 @@
 		<key>enabled</key>
 		<true/>
 		<key>index</key>
-		<string>3</string>
+		<string>4</string>
 		<key>icon</key>
 		<string>/Library/Application Support/Power Tap/SafeModeKnob.png</string>
 		<key>string</key>
 		<string>slide for safe mode</string>
+	</dict>
+	<key>UICache</key>
+	<dict>
+		<key>color</key>
+		<string>lightGray</string>
+		<key>enabled</key>
+		<true/>
+		<key>index</key>
+		<string>5</string>
+		<key>icon</key>
+		<string>/Library/Application Support/Power Tap/UICacheKnob.png</string>
+		<key>string</key>
+		<string>slide to uicache</string>
 	</dict>
 </dict>
 </plist>

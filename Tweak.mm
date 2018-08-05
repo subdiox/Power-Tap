@@ -120,10 +120,23 @@ static void update (
 		%orig;
 	} else if ([modeString isEqualToString: @"Reboot"]) {
 		[(FBSystemService *)[objc_getClass("FBSystemService") sharedInstance] shutdownAndReboot:YES];
-	}	else if ([modeString isEqualToString: @"Respring"]) {
+	}	else if ([modeString isEqualToString: @"SoftReboot"]) {
+		pid_t pid;
+		int status;
+		posix_spawn(&pid, "/usr/bin/ldrestart0", NULL, NULL, NULL, NULL);
+		waitpid(pid, &status, WEXITED);
+	} else if ([modeString isEqualToString: @"Respring"]) {
 		[(FBSystemService *)[objc_getClass("FBSystemService") sharedInstance] exitAndRelaunch:YES];
 	} else if ([modeString isEqualToString: @"SafeMode"]) {
 		[[UIApplication sharedApplication] nonExistentMethod];
+	} else if ([modeString isEqualToString: @"UICache"]) {
+		pid_t pid;
+		int status;
+		posix_spawn(&pid, "/usr/bin/uicache", NULL, NULL, NULL, NULL);
+		if (waitpid(pid, &status, 0) == -1) {
+			NSLog(@"UICache Failed!");
+		}
+		[(FBSystemService *)[objc_getClass("FBSystemService") sharedInstance] exitAndRelaunch:YES];
 	} else {
 		%orig;
 	}	
@@ -140,6 +153,6 @@ static void update (
 %ctor {
 	PREFS = [PTPreferences new];
 	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, update,
-		 CFSTR("com.dpkgdan.powertap.settingsupdated"), NULL,
+		 CFSTR("com.subdiox.powertap.settingsupdated"), NULL,
 		  CFNotificationSuspensionBehaviorDeliverImmediately);
 }

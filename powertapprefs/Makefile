@@ -1,4 +1,5 @@
 ARCHS = arm64
+TARGET = iphone:11.2:11.0
 ADDITIONAL_OBJCFLAGS = -fobjc-arc
 
 include $(THEOS)/makefiles/common.mk
