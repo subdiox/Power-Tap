@@ -15,21 +15,21 @@ static void update (
 static int currentIndex = 0;
 static PTPreferences *PREFS = nil;
 
-static int nextValidIndex()
-{
+static int nextValidIndex() {
 	BOOL firstValuePassed = NO;
 	
-    //Stop when the loop is complete (i has reached its initial value again)
-	for (int i = (currentIndex + 1); i != currentIndex; i++)
-	{
-		if (i == [PREFS.modes count])
+  //Stop when the loop is complete (i has reached its initial value again)
+	for (int i = (currentIndex + 1); i != currentIndex; i++) {
+		if (i == [PREFS.modes count]) {
 			i = 0; //Reset if we have reached the end of the modes list
+		}
 
 		BOOL enabled = [[PREFS valueForSpecifier: @"enabled" mode: [PREFS modeForIndex: i]] boolValue];
 		//Check if mode is enabled
 		
-		if (enabled)
+		if (enabled) {
 			return i;
+		}
 		
 		firstValuePassed = YES;
 	}
@@ -63,26 +63,22 @@ static void update (
 }
 
 %new
-- (UIImageView*)knobImageView
-{
+- (UIImageView*)knobImageView {
 	return MSHookIvar<UIImageView*>(self, "_knobImageView");
 }
 
 %new
-- (void)setNewKnobImage:(UIImage*)image
-{
+- (void)setNewKnobImage:(UIImage*)image {
 	image = [image imageWithRenderingMode: UIImageRenderingModeAlwaysTemplate];
 	[self knobImageView].image = image;
 	[self knobImageView].tintColor = [PREFS tintColorForMode: [PREFS modeForIndex: currentIndex]];
 }
 
 %new
-- (void)knobTapped
-{
+- (void)knobTapped {
 	int _nextValidIndex = nextValidIndex();
 	
-	if (_nextValidIndex != -1)
-	{
+	if (_nextValidIndex != -1) {
 		currentIndex = _nextValidIndex; //Switch indicies for next mode
 		NSString *modeString = [PREFS modeForIndex: currentIndex];
 	
@@ -98,8 +94,7 @@ static void update (
 
 %hook SBPowerDownController
 
-- (void)activate
-{
+- (void)activate {
 	%orig();
 	
 	//Getting access to the current instance we need
@@ -113,18 +108,29 @@ static void update (
 	[[actionSlider _knobView] addGestureRecognizer: knobTap];
 }
 
-- (void)powerDown
-{
+- (void)powerDown {
 	NSString *modeString = [PREFS modeForIndex: currentIndex];
 	if ([modeString isEqualToString: @"PowerDown"]) {
 		%orig;
 	} else if ([modeString isEqualToString: @"Reboot"]) {
 		[(FBSystemService *)[objc_getClass("FBSystemService") sharedInstance] shutdownAndReboot:YES];
 	}	else if ([modeString isEqualToString: @"SoftReboot"]) {
-		pid_t pid;
-		int status;
-		posix_spawn(&pid, "/usr/bin/ldrestart0", NULL, NULL, NULL, NULL);
-		waitpid(pid, &status, WEXITED);
+		posix_spawn_file_actions_t action;
+    posix_spawn_file_actions_init(&action);
+    posix_spawn_file_actions_addclose (&action, STDIN_FILENO);
+    posix_spawn_file_actions_addclose (&action, STDOUT_FILENO);
+    posix_spawn_file_actions_addclose (&action, STDERR_FILENO);
+
+    posix_spawnattr_t attrp;
+    posix_spawnattr_init(&attrp);
+    posix_spawnattr_setflags(&attrp, POSIX_SPAWN_SETPGROUP);
+    posix_spawnattr_setpgroup(&attrp, 0);
+
+    pid_t pid;
+    const char *args[] = {"sh", "-c", "/usr/bin/ldrestart0", NULL};
+    posix_spawn(&pid, "/bin/sh", &action, &attrp, (char* const*)args, NULL);
+    posix_spawn_file_actions_destroy(&action);
+    posix_spawnattr_destroy(&attrp);
 	} else if ([modeString isEqualToString: @"Respring"]) {
 		[(FBSystemService *)[objc_getClass("FBSystemService") sharedInstance] exitAndRelaunch:YES];
 	} else if ([modeString isEqualToString: @"SafeMode"]) {
@@ -142,8 +148,7 @@ static void update (
 	}	
 }
 
-- (void)cancel
-{
+- (void)cancel {
 	currentIndex = 0; //Resets mode cycle
 	%orig;
 }

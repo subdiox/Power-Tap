@@ -2,7 +2,7 @@ Package: com.subdiox.powertap2
 Name: Power Tap 2
 Depends: firmware (>= 11), mobilesubstrate, preferenceloader
 Conflicts: com.dpkgdan.slidetoreboot, com.myrepospace.dpkgdan.powertap, com.myrepospace.dpkgdan.slidetoreboot, com.dpkgdan.powertap
-Version: 1.0
+Version: 1.0.1
 Architecture: iphoneos-arm
 Description: Power Tap 2 adds "Reboot", "Soft Reboot", "Respring", "Safe Mode", "UICache" to your power down options.
 Maintainer: subdiox

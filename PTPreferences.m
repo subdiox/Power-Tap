@@ -6,34 +6,28 @@
 @implementation PTPreferences
 
 static void reconcilePreferences(NSMutableDictionary *defaults, NSMutableDictionary *customPrefs,
-								 NSString *preferenceSpecifier, NSString *entryToReplace)
-{
+								 NSString *preferenceSpecifier, NSString *entryToReplace) {
 	NSArray *defaultModes = [defaults allKeys]; //Array of modes listed in defaults
 
-	for (int i = 0; i < [defaultModes count]; i++)
-	{
+	for (int i = 0; i < [defaultModes count]; i++) {
 		NSString *mode = [defaultModes objectAtIndex: i];
 		NSString *customPrefsKey = [mode stringByAppendingString: preferenceSpecifier]; //Get key for given mode using
 																						//preference specifier
 		
 		id preferenceObject = [customPrefs objectForKey: customPrefsKey];
 		if (preferenceObject && !(([preferenceObject isKindOfClass: [NSString class]]) 
-			&& ([preferenceObject isEqualToString: @""])))
-			//Don't replace blank strings! Return to the placeholder (default)
-		{	
+			&& ([preferenceObject isEqualToString: @""]))) {
+			//Don't replace blank strings! Return to the placeholder (default)	
 			[[defaults objectForKey: mode] setObject: preferenceObject forKey: entryToReplace];	
 		}
 	}
 }
 
-- (PTPreferences*)init
-{
-	if ((self = [super init]))
-	{
+- (PTPreferences*)init {
+	if ((self = [super init])) {
 		NSMutableDictionary *defaults = [[NSMutableDictionary alloc] initWithContentsOfFile: DEFAULTS_PATH];
 		NSMutableDictionary *customPrefs = [[NSMutableDictionary alloc] initWithContentsOfFile: USER_PREFS_PATH];
-		if (customPrefs)
-		{
+		if (customPrefs) {
 			reconcilePreferences(defaults, customPrefs, @"-Toggle", @"enabled");
 			reconcilePreferences(defaults, customPrefs, @"-String", @"string");
 		}
@@ -43,71 +37,67 @@ static void reconcilePreferences(NSMutableDictionary *defaults, NSMutableDiction
 	return self;	
 }
 
-- (NSString*)modeForIndex:(int)index
-{
-	for (int i = 0; i < [self.modes count]; i++)
-	{
+- (NSString*)modeForIndex:(int)index {
+	for (int i = 0; i < [self.modes count]; i++) {
 		int loopingIndex = [[self valueForSpecifier: @"index" mode: [self.modes objectAtIndex: i]] intValue];
-		if (loopingIndex == index)
+		if (loopingIndex == index) {
 			return [self.modes objectAtIndex: i];
+		}
 	}
 	return nil;
 }
 
-- (id)valueForSpecifier:(NSString*)specifier mode:(NSString*)mode
-{
+- (id)valueForSpecifier:(NSString*)specifier mode:(NSString*)mode {
 	return [[_preferences objectForKey: mode] objectForKey: specifier];
 }
 
-- (UIImage*)iconForMode:(NSString*)mode
-{
+- (UIImage*)iconForMode:(NSString*)mode {
 	NSString *pathToIcon = [self valueForSpecifier: @"icon" mode: mode];
 	UIImage *icon = [UIImage imageWithContentsOfFile: pathToIcon];
 	return icon;
 }
 
-- (UIColor*)tintColorForMode:(NSString*)mode
-{
+- (UIColor*)tintColorForMode:(NSString*)mode {
 	NSString *colorString = [self valueForSpecifier: @"color" mode: mode];
 	
-	if ([colorString isEqualToString: @"red"])
+	if ([colorString isEqualToString: @"red"]) {
 		return [UIColor redColor];
-	else if ([colorString isEqualToString: @"orange"])
+	} else if ([colorString isEqualToString: @"orange"]) {
 		return [UIColor orangeColor];
-	else if ([colorString isEqualToString: @"cyan"])
+	} else if ([colorString isEqualToString: @"cyan"]) {
 		return [UIColor cyanColor];
-	else if ([colorString isEqualToString: @"purple"])
+	} else if ([colorString isEqualToString: @"purple"]) {
 		return [UIColor purpleColor];
-	else if ([colorString isEqualToString: @"gray"])
+	} else if ([colorString isEqualToString: @"gray"]) {
 		return [UIColor grayColor];
-	else if ([colorString isEqualToString: @"black"])
+	} else if ([colorString isEqualToString: @"black"]) {
 		return [UIColor blackColor];
-	else if ([colorString isEqualToString: @"lightGray"])
+	} else if ([colorString isEqualToString: @"lightGray"]) {
 		return [UIColor lightGrayColor];
-	else if ([colorString isEqualToString: @"blue"])
+	} else if ([colorString isEqualToString: @"blue"]) {
 		return [UIColor blueColor];
-	else if ([colorString isEqualToString: @"magenta"])
+	} else if ([colorString isEqualToString: @"magenta"]) {
 		return [UIColor magentaColor];
-	else if ([colorString isEqualToString: @"brown"])
+	} else if ([colorString isEqualToString: @"brown"]) {
 		return [UIColor brownColor];
-	else if ([colorString isEqualToString: @"green"])
+	} else if ([colorString isEqualToString: @"green"]) {
 		return [UIColor greenColor];
-	else
+	} else {
 		return nil;
+	}
 }
 
-- (NSArray*)trackTexts
-{
+- (NSArray*)trackTexts {
 	NSMutableArray *_trackTexts = [NSMutableArray new];
 	
-	for (int i = 0; i < [self.modes count]; i++)
+	for (int i = 0; i < [self.modes count]; i++) {
 		[_trackTexts addObject: [self valueForSpecifier: @"string" mode: [self modeForIndex: i]]];
+	}
 	
 	return [[NSArray alloc] initWithArray: _trackTexts];
 }
 
-- (void)setPowerDownTrackText:(NSString*)trackText
-{
+- (void)setPowerDownTrackText:(NSString*)trackText {
 	NSMutableDictionary *tempDict = [_preferences mutableCopy];
 	[[tempDict objectForKey: @"PowerDown"] setObject: trackText forKey: @"string"];
 	
