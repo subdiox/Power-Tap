@@ -127,7 +127,7 @@ static void update (
     posix_spawnattr_setpgroup(&attrp, 0);
 
     pid_t pid;
-    const char *args[] = {"sh", "-c", "/usr/bin/ldrestart0", NULL};
+    const char *args[] = {"sh", "-c", "/usr/bin/sudo /usr/bin/ldrestart", NULL};
     posix_spawn(&pid, "/bin/sh", &action, &attrp, (char* const*)args, NULL);
     posix_spawn_file_actions_destroy(&action);
     posix_spawnattr_destroy(&attrp);
