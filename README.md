@@ -1,5 +1,5 @@
-# Power-Tap
-Power Tap allows you to toggle the power down bar through different settings, such as "reboot," "respring," and "safe mode." Toggling takes place when you tap the slider's knob (a circular icon with a power symbol). Power Tap is intended to replace the earlier tweak "Slide to Reboot".
+# Power Tap 2
+Power Tap 2 allows you to toggle the power down bar through different settings, such as "reboot", "soft reboot", "respring", "safe mode", and "uicache". Toggling takes place when you tap the slider's knob (a circular icon with a power symbol). Power Tap is intended to replace the earlier tweak "Slide to Reboot".
 
 # Installation from Cydia
 1. Add repo [http://subdiox.com/cydia](http://subdiox.com/cydia)
